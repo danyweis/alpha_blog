@@ -1,18 +1,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-10">
-            <% if @article.errors.any? %>
-            <h2>The following errors prevented the acticle from being saved:</h2>
-            <ul>
-                <% @article.errors.full_messages.each do |message|%>
-                    <li>
-                        <%= message%> 
-                    </li>
-                <% end %>
-            </ul>
-            <% end %>
-
-
+            <%= render 'shared/errors' %>
             <%= form_with(model: @article, class: "shadow p-3 mb-5 bg-info rounded", local: true) do |form|%>
 
                 <div class="form-group row">
@@ -34,7 +23,9 @@
                 </div>
 
             <% end %>
+            <div class="mb-3 text-center">
+                <%= link_to '[ Back to the articles listings ]', articles_path, class: "text-center"%>
+            </div>
         </div>
-        <%= link_to '[ Back to the articles listings ]', articles_path, class: "text-center"%>
     </div>
 </div>
